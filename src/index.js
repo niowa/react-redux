@@ -5,6 +5,7 @@ import App from './containers/App'
 import '../src/styles/app.css' 
 import configureStore from './store/configureStore'
 
+
 const store = configureStore()
 
 render(
@@ -13,3 +14,5 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+export default store;

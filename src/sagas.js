@@ -7,8 +7,6 @@ function* fetchUser(action) {
 
    	const email = action.payload.email;
    	const password = action.payload.password;
-    console.log('SAGAAA ' + action.payload.email);
-    console.log('SAGAAA ' + action.payload.password);
 	var XHR = XMLHttpRequest;
 	var xhr = new XHR();
 
@@ -24,7 +22,7 @@ function* fetchUser(action) {
 	//xhr.setRequestHeader('Content-Type', 'hello');
 	xhr.send();
 	let jsonData = JSON.parse(xhr.responseText);
-	let token = jsonData.jwtToken;
+	let token = jsonData.jwtToken || null;
 	console.log('token ' + token);
 
       //const user = yield call(Api.fetchUser, action.payload.userId);
@@ -35,7 +33,6 @@ function* fetchUser(action) {
 }
 
 function* mySaga() {
-	console.log('sagatut');
   yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as loginActions from '../actions/LoginActions'
+import * as store from '../index'
 // import User from '../components/User'
 // import Page from '../components/Page'
 // import * as pageActions from '../actions/PageActions'
@@ -9,11 +10,12 @@ import * as loginActions from '../actions/LoginActions'
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.user)
+    console.log('user ' + JSON.stringify(this.props.user));
     let email = props.email;
     let password = props.password;
     this.state = {email: '', password: ''};
-    console.log(this.state);
+    console.log('state ' + JSON.stringify(this.state));
+
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePassChange = this.handlePassChange.bind(this);
@@ -33,16 +35,13 @@ class App extends Component {
   handleSubmit(event) {
     const {dispatch} = this.props;
     const {email, password} = this.state;
-    console.log('fun ' + loginActions.setLogin);
     // console.log('email ' + email);
     // console.log('password ' + password);
     let user = {email, password};
     dispatch(loginActions.setLogin({email, password}));
-    //console.log(this.state)
-    console.log('A name was submitted: ' + this.state.email + this.state.password);
+    console.log('store');
+    console.log(store.default.getState());
     event.preventDefault();
-
-
   }
 
   render() {
@@ -77,3 +76,24 @@ function mapStateToProps(state) {
 // export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 export default connect(mapStateToProps)(App);
+
+
+// import * as actionCreators from './actionCreators'
+// import { bindActionCreators } from 'redux'
+
+// function selectorFactory(dispatch) {
+//   let state = {}
+//   let ownProps = {}
+//   let result = {}
+//   const actions = bindActionCreators(actionCreators, dispatch)
+//   const addTodo = (text) => actions.addTodo(ownProps.userId, text)
+//   return (nextState, nextOwnProps) => {
+//     const todos = nextState.todos[nextProps.userId]
+//     const nextResult = { ...nextOwnProps, todos, addTodo }
+//     state = nextState
+//     ownProps = nextOwnProps
+//     if (!shallowEqual(result, nextResult)) result = nextResult
+//     return result
+//   }
+// }
+// export default connectAdvanced(selectorFactory)(TodoApp)

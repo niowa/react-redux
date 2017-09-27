@@ -1,10 +1,9 @@
-import { SET_YEAR } from '../constants/Page'
+import { GET_STATE } from '../constants/Page'
 
-export function setYear(year) {
+export function getState(text) {
 
   return {
-    type: SET_YEAR,
-    payload: year
+    type: GET_STATE,
+    payload: text
   }
-
 }

@@ -1,1 +1,1 @@
-export const SET_YEAR = 'SET_YEAR'
+export const GET_STATE = 'GET_STATE'

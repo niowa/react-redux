@@ -1,20 +1,48 @@
 import React, { PropTypes, Component } from 'react'
 
 export default class Page extends Component {
-  onYearBtnClick(e) {
-    this.props.setYear(+e.target.innerText)
+  constructor(props) {
+    super(props);
+    let email = props.email;
+    let password = props.password;
+    this.state = {email: '', password: ''};
+    console.log(this.state);
+
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePassChange = this.handlePassChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleEmailChange(event) {
+    console.log(event.target.value);
+    this.setState({email: event.target.value});
+  }
+
+  handlePassChange(event) {
+    console.log(event.target.value);
+    this.setState({password: event.target.value});
+  }
+
+  handleSubmit(event) {
+    console.log(this.state)
+    alert('A name was submitted: ' + this.state.email + this.state.password);
+    event.preventDefault();
+  }
+
   render() {
-    const { year, photos } = this.props
-    return <div>
-      <p>
-        <button onClick={::this.onYearBtnClick}>2016</button>
-        <button onClick={::this.onYearBtnClick}>2015</button>
-        <button onClick={::this.onYearBtnClick}>2014</button>
-      </p>
-      <h3>{year} год</h3>
-      <p>У тебя {photos.length} фото.</p>
-    </div>
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Email:
+          <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+        </label>
+        <label>
+          Password:
+          <input type="text" value={this.state.password} onChange={this.handlePassChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
   }
 }
 

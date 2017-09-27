@@ -4,11 +4,7 @@ export default class User extends Component {
   render() {
     const { name } = this.props
     return <div>
-      <p>Привет, {name}!</p>
+      <h1>kek</h1>
     </div>
   }
-}
-
-User.propTypes = {
-  name: PropTypes.string.isRequired
 }

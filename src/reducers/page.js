@@ -1,15 +1,14 @@
-import { SET_YEAR } from '../constants/Page'
+import { GET_STATE } from '../constants/Page'
 
 const initialState = {
-  year: 2016,
-  photos: []
+  text: ''
 }
 
 export default function page(state = initialState, action) {
 
   switch (action.type) {
-    case SET_YEAR:
-      return { ...state, year: action.payload }
+    case GET_STATE:
+      return state;
 
     default:
       return state;

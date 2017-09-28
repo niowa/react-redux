@@ -1,9 +1,9 @@
-import { GET_STATE } from '../constants/Page'
+import { USER_GET_REQUESTED } from '../constants/Page'
 
-export function getState(text) {
+export function getState(token) {
 
   return {
-    type: GET_STATE,
-    payload: text
+    type: USER_GET_REQUESTED,
+    payload: token
   }
 }

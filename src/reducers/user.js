@@ -1,4 +1,4 @@
-import { USER_FETCH_SUCCEEDED, USER_FETCH_FAILED} from '../constants/Login'
+import { USER_FETCH_SUCCEEDED, USER_FETCH_FAILED, USER_GET_SUCCEEDED } from '../constants/Login'
 
 const initialState = {
 	token: ''
@@ -16,6 +16,12 @@ export default function user(state = initialState, action) {
     case USER_FETCH_FAILED: 
     	console.log('not fount');
     	return { ...state, token: null };
+
+    case USER_GET_SUCCEEDED:
+      console.log('ACTION GET ' + JSON.stringify(action))
+      console.log('GET ' + JSON.stringify(state));
+      return { ...state, res: action.res };
+
 
     default:
       console.log('DEFAULT ' + JSON.stringify(state));

@@ -1,1 +1,1 @@
-export const GET_STATE = 'GET_STATE'
+export const USER_GET_REQUESTED = 'USER_GET_REQUESTED'

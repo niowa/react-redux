@@ -3,6 +3,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as loginActions from '../actions/LoginActions'
 import * as store from '../index'
+import { Link } from 'react-router-dom'
+import history from 'history'
+
+
 // import User from '../components/User'
 // import Page from '../components/Page'
 // import * as pageActions from '../actions/PageActions'
@@ -41,12 +45,15 @@ class App extends Component {
     dispatch(loginActions.setLogin({email, password}));
     console.log('store');
     console.log(store.default.getState());
+
+    //history.push('/home', { some: 'state' })
     event.preventDefault();
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+
         <label>
           Email:
           <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
@@ -56,6 +63,7 @@ class App extends Component {
           <input type="text" value={this.state.password} onChange={this.handlePassChange} />
         </label>
         <input type="submit" value="Submit" />
+        <Link to='/home'>Home</Link>
       </form>
     );
   }
